@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Nice pretty barebones CentOS with GuestAdditions
+  config.vm.box = "CentOS-6.4-x86_64-v20131103"
+  config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20131103.box"
+
+  config.vm.provision :shell, :path => "centos6_update_epel_ansible.sh"
+
+  config.vm.provider :virtualbox do |vb|
+    config.cache.auto_detect = true # Using https://github.com/fgrehm/vagrant-cachier
+  end
+end
